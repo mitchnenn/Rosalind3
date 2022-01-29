@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Rosalind3", "Rosalind3\Rosalind3.fsproj", "{BC9D8220-0CB2-4126-8A84-7D348DA69B62}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common", "Common\Common.fsproj", "{A4AEA296-4F17-4C83-8734-12C4E94F0322}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CommonUnitTests", "CommonUnitTests\CommonUnitTests.fsproj", "{51DEE18C-5460-4E5B-90F6-7581631DBEC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{BC9D8220-0CB2-4126-8A84-7D348DA69B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC9D8220-0CB2-4126-8A84-7D348DA69B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC9D8220-0CB2-4126-8A84-7D348DA69B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4AEA296-4F17-4C83-8734-12C4E94F0322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4AEA296-4F17-4C83-8734-12C4E94F0322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4AEA296-4F17-4C83-8734-12C4E94F0322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4AEA296-4F17-4C83-8734-12C4E94F0322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DEE18C-5460-4E5B-90F6-7581631DBEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DEE18C-5460-4E5B-90F6-7581631DBEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DEE18C-5460-4E5B-90F6-7581631DBEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DEE18C-5460-4E5B-90F6-7581631DBEC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
