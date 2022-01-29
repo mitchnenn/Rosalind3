@@ -5,6 +5,7 @@ open Converter
 open Xunit
 open Xunit.Abstractions
 open FsUnit
+open ImmutableStack
 
 type ``Shortest super string tests`` (output:ITestOutputHelper) =
     do new Converter(output) |> Console.SetOut
@@ -12,26 +13,31 @@ type ``Shortest super string tests`` (output:ITestOutputHelper) =
     [<Fact>]
     member _.``Test example usage of the stack`` () =
         // Arrange.
-        let s = ImmutableStack.Empty
+        let s = EmptyStack
         // Act.
-        let s' = s.Push 5
-        let s'' = s'.Push 4
-        let s''' = s''.Push 3
-        output.WriteLine $"%A{s'''.All()}"
+        let s' = s |> push 5 |> push 4 |> push 3
+        output.WriteLine $"%A{all s'}"
         // Arrange.
-        s'''.All().Length |> should equal 3
-        s'''.Top() |> should equal s''
-        s'''.Pop() |> should equal 3
+        (all s').Length |> should equal 3
+        top s' |> should equal 3
+        let v,newStack = pop s'
+        v |> should equal 3
+        (all newStack).Length |> should equal 2
     
     [<Fact>]
     member _.``Test Push`` () =
         // Arrange.
-        let s = ImmutableStack.Empty
+        let s = EmptyStack
         let value = 5
         // Act.
-        let s' = s.Push value
-        output.WriteLine $"%A{s'.All()}"
+        let s' = push value s
+        output.WriteLine $"%A{all s'}"
         // Assert.
-        s'.IEmpty |> should equal false
-        s'.Pop() |> should equal value
+        (all s').Length |> should equal 1
+        isEmpty s' |> should equal false
+        top s' |> should equal 5
+        let v,newStack = pop s'
+        v |> should equal value
+        (all s').Length |> should equal 1
+        (all newStack).Length |> should equal 0
         

@@ -1,31 +1,39 @@
 module ImmutableStack
 
-type ImmutableStack<'T> =
-    | Empty
-    | Stack of 'T * ImmutableStack<'T>
+type ImmutableStack<'T> = StackContents of 'T list
 
-    member s.Push x = Stack(x, s)
+let EmptyStack = StackContents []
 
-    member s.Pop() =
-        match s with
-        | Empty -> failwith "Underflow"
-        | Stack (t, _) -> t
+let push<'T> (x:'T) (stack:ImmutableStack<'T>) : ImmutableStack<'T> =
+    let (StackContents contents) = stack
+    let newContents = x::contents
+    StackContents newContents
+    
+let pop<'T> (stack:ImmutableStack<'T>) : 'T * ImmutableStack<'T> =
+    let (StackContents contents) = stack
+    match contents with
+    | [] ->
+        failwith "Stack underflow"
+    | top::rest ->
+        let newStack = StackContents rest
+        (top,newStack)
 
-    member s.Top() =
-        match s with
-        | Empty -> failwith "Contain no elements"
-        | Stack (_, st) -> st
+let all<'T> (stack:ImmutableStack<'T>) : 'T list =
+    let (StackContents contents) = stack
+    let rec loop rest acc =
+        match rest with
+        | [] -> acc
+        | top::rest -> loop rest (top::acc)
+    loop contents []
+    
+let top<'T> (stack:ImmutableStack<'T>) : 'T =
+    let (StackContents contents) = stack
+    match contents with
+    | [] -> failwith "Stack is empty"
+    | top::_ -> top
 
-    member s.IEmpty =
-        match s with
-        | Empty -> true
-        | _ -> false
-
-    member s.All() =
-        let rec loop acc =
-            function
-            | Empty -> acc
-            | Stack (t, st) -> loop (t :: acc) st
-
-        loop [] s
-   
+let isEmpty<'T> (stack:ImmutableStack<'T>) : bool =
+    let (StackContents contents) = stack
+    match contents with
+    | [] -> true
+    | _ -> false
