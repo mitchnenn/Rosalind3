@@ -12,11 +12,8 @@ let push<'T> (x:'T) (stack:ImmutableStack<'T>) : ImmutableStack<'T> =
 let pop<'T> (stack:ImmutableStack<'T>) : 'T * ImmutableStack<'T> =
     let (StackContents contents) = stack
     match contents with
-    | [] ->
-        failwith "Stack underflow"
-    | top::rest ->
-        let newStack = StackContents rest
-        (top,newStack)
+    | [] -> failwith "Stack underflow"
+    | top::rest -> (top,StackContents rest)
 
 let all<'T> (stack:ImmutableStack<'T>) : 'T list =
     let (StackContents contents) = stack

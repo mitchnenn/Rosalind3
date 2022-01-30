@@ -10,6 +10,7 @@
     <ItemGroup>
         <Compile Include="Converter.fs" />
         <Compile Include="ImmutableStackTests.fs" />
+        <Compile Include="ImmutableQueueTests.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

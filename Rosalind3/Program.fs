@@ -1,5 +1,5 @@
 open Rosalind3
-open parse_fasta
+open ParseFasta
 
 open System.IO
 

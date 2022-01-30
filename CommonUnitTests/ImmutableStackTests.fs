@@ -1,4 +1,4 @@
-module Tests
+module ImmutableStackTests
 
 open System
 open Converter
@@ -7,7 +7,7 @@ open Xunit.Abstractions
 open FsUnit
 open ImmutableStack
 
-type ``Shortest super string tests`` (output:ITestOutputHelper) =
+type ``Immutable stack tests`` (output:ITestOutputHelper) =
     do new Converter(output) |> Console.SetOut
 
     [<Fact>]
@@ -22,6 +22,7 @@ type ``Shortest super string tests`` (output:ITestOutputHelper) =
         top s' |> should equal 3
         let v,newStack = pop s'
         v |> should equal 3
+        top newStack |> should equal 4
         (all newStack).Length |> should equal 2
     
     [<Fact>]

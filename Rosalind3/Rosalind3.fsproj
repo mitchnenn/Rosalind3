@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="parse-fasta.fs" />
+        <Compile Include="ParseFasta.fs" />
         <Compile Include="Program.fs" />
         <Content Include="data\PerfectMatchRnaSecStructure-Example.txt" />
     </ItemGroup>

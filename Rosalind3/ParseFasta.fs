@@ -1,4 +1,4 @@
-module Rosalind3.parse_fasta
+module Rosalind3.ParseFasta
 
 open System.IO
 open System.Text
